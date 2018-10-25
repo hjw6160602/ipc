@@ -29,7 +29,7 @@ func NewIpcServer(server Server) *IpcServer  {
 }
 
 func (server *IpcServer)Connect() chan string {
-    session := make(chan string, 0 )
+    session := make(chan string, 0)
     go func(c chan string) {
         for {
             request := <-c
@@ -55,17 +55,3 @@ func (server *IpcServer)Connect() chan string {
     fmt.Println("A new session has been created successfully")
     return session
 }
-
-//func (server *IpcServer)Handle(method, params string) *Response {
-//   switch method {
-//   case "foo":
-//       return &Response{Code:"200", Body:"foo succeed!"}
-//   default:
-//       return &Response{Code:"404", Body:method + ":" + params}
-//   }
-//   return &Response{Code:"200"}
-//}
-//
-//func (server *IpcServer)Name() string {
-//   return "IpcServer"
-//}
